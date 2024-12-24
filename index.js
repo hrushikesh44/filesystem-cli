@@ -34,12 +34,13 @@ program.command('add-data')
         if (err) {
           console.log(err);
         } else {
-          const finalData = data1.concat(data )
+          const finalData = data1.concat(data)
           fs.writeFile(file, finalData, (err) => {
             if (err) {
               console.log(err);
             } else {
               console.log(`data added to ${file}`);
+              console.log(finalData);
             }
           });
         }
