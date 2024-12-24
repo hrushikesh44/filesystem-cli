@@ -21,12 +21,29 @@ program.command('count')
     })
   });
 
-program.command('add')
-  .description('add text in a file')
-  .argument('<text>', 'add to a file')
-  .action((file) => {
-    fs.writeFile("text", )
-  });
+  program
+    .name('add-data');
 
+program.command('add-data')
+    .description('add data to a file')
+    .argument('<file>', 'add data to a file')
+    .argument('<data>', 'data to add')
+    .action((file, data) => {
+      const data1 = data;
+      fs.readFile(file, 'utf8', (err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const finalData = data1.concat(data )
+          fs.writeFile(file, finalData, (err) => {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log(`data added to ${file}`);
+            }
+          });
+        }
+      });
+});
 
   program.parse();
